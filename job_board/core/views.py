@@ -3,8 +3,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
+from job.models import Job
+
 def frontpage(request):
-  return render(request, 'core/frontpage.html')
+  jobs = Job.objects.all()
+
+
+  return render(request, 'core/frontpage.html', {
+    'jobs': jobs
+  })
 
 def signup(request):
 
