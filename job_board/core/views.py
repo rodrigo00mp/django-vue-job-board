@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 from job.models import Job
+from userprofile.models import Userprofile
 
 def frontpage(request):
   jobs = Job.objects.all()
@@ -24,11 +25,15 @@ def signup(request):
       account_type = request.POST.get('account_type', 'jobseeker')
 
       if account_type == 'employer':
-        user.userprofile.is_employer = True
-        user.userprofile.save()
+        userprofile = Userprofile.objects.create(user=user, is_employer=True)
+        userprofile.save()
+      else:
+        userprofile = Userprofile.objects.create(user=user)
+        userprofile.save()
+
       login(request, user)
 
-      return redirect('frontpage')
+      return redirect('dashboard')
   else:
     form = UserCreationForm()
   return render(request, 'core/signup.html', {
