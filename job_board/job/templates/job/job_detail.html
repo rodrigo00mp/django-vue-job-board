@@ -7,4 +7,6 @@
   <p class="fs-4">{{job.short_description}}</p>
 
   <p class="">{{job.long_description}}</p>
+
+  <a href="{%url 'apply_for_job' job.id%}" class="btn btn-success">Apply for job</a>
 {%endblock%}
