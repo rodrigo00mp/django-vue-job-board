@@ -18,6 +18,7 @@
             {%if request.user.is_authenticated%}
             {%if request.user.is_authenticated%}
             <a class="nav-item p-2" href="{%url 'dashboard' %}">Dashboard</a>
+            <a class="nav-item p-2" href="{%url 'notifications' %}">Notifications ({{notifications.count}}) </a>
             {%endif%}
             <form method="post" action="{% url 'logout' %}" style="display: inline;">
                 {% csrf_token %}
