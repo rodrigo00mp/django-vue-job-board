@@ -20,6 +20,12 @@ def signup(request):
 
     if form.is_valid():
       user = form.save()
+
+      account_type = request.POST.get('account_type', 'jobseeker')
+
+      if account_type == 'employer':
+        user.userprofile.is_employer = True
+        user.userprofile.save()
       login(request, user)
 
       return redirect('frontpage')

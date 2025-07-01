@@ -10,6 +10,17 @@
           {% csrf_token %}
 
           {{form.as_p}}
+          
+          <div class="field">
+            <div class="control">
+              <div class="form-select">
+                <select name="account_type" id="">
+                  <option value="jobseeker">Job seeker</option>
+                  <option value="employer">Employer</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
           <div class="field">
             <div class="control">
