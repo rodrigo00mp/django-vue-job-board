@@ -1,0 +1,15 @@
+{%extends 'core/base.html'%}
+
+{%block content%}
+
+<h1 class="title">View job - {{job.title}} </h1>
+      {%for application in job.applications.all%}
+      <div class="application">
+        <a href="{%url 'view_application' application.id%}">{{application.created_by.username}}</a>
+      </div>
+      {%empty%}
+      <p>No one has applied to this job yet</p>
+      {%endfor%}
+
+
+{%endblock%}
