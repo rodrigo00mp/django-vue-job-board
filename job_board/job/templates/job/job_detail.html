@@ -8,5 +8,12 @@
 
   <p class="">{{job.long_description}}</p>
 
+  <p>{{job.long_description}}</p>
+
+      <b>Company name:</b>{{job.company_name}}<br>
+      <b>Company address:</b>{{job.company_address}}<br>
+      <b>Company Country:</b>{{job.company_country}}<br>
+      <b>Company size:</b>{{job.get_company_size_display}}<br>
+
   <a href="{%url 'apply_for_job' job.id%}" class="btn btn-success">Apply for job</a>
 {%endblock%}

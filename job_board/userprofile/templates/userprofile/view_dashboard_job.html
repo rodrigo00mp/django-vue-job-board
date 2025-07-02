@@ -2,13 +2,21 @@
 
 {%block content%}
 
-<h1 class="title">View job - {{job.title}} </h1>
+      <h1 class="title">View job - {{job.title}} </h1>
+      <p>{{job.short_description}}</p>
+
+      <p>{{job.long_description}}</p>
+
+      <b>Company name:</b>{{job.company_name}}<br>
+      <b>Company address:</b>{{job.company_address}}<br>
+      <b>Company Country:</b>{{job.company_country}}<br>
+      <b>Company size:</b>{{job.get_company_size_display}}<br>
       {%for application in job.applications.all%}
       <div class="application">
         <a href="{%url 'view_application' application.id%}">{{application.created_by.username}}</a>
       </div>
       {%empty%}
-      <p>No one has applied to this job yet</p>
+      <p class="mt-4">No one has applied to this job yet</p>
       {%endfor%}
 
 
